@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: 'Tangerine', cursive;
+    font-size: 72px;
+    font-weight: 100;
+}
+
+h2 {
+    padding-left: 5%;
+    font-family: 'Tangerine', cursive;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+p {
+    padding: 5%;
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+
+.header {
+    margin: 5%;
+    padding: 0;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    
+}
+
+.content-left {
+    background-color: aliceblue;
+}
+
+.content-right {
+    color: white;
+    background-color: black;
+}
+
