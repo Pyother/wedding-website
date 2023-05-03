@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Container, Grid, Divider } from '@mui/material';
 import { Skeleton } from '@material-ui/lab';
-import background from './images/background_5.png';
+import Countdown from 'react-countdown';
+import background from './images/background.png';
 
 function ImageWithPlaceholder({ src }) {
     const [isLoading, setIsLoading] = React.useState(true);
@@ -15,6 +16,66 @@ function ImageWithPlaceholder({ src }) {
             )}
         </div>
     );
+}
+
+function Counter() {
+    const [timerDays, setTimerDays] = useState('00'); 
+    const [timerHours, setTimerHours] = useState('00'); 
+    const [timerMinutes, setTimerMinutes] = useState('00'); 
+    const [timerSeconds, setTimerSeconds] = useState('00');
+    
+    let interval = useRef();
+
+    const startTimer = () => {
+        const weddingDate = new Date('May 13, 2023 14:00:00').getTime();
+        interval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+            if(distance < 0) {
+                clearInterval(interval.current);
+            } else {
+                setTimerDays(days);
+                setTimerHours(hours);
+                setTimerMinutes(minutes);
+                setTimerSeconds(seconds);
+            }
+        }, 1000);
+    }
+
+    useEffect(() => {
+        startTimer();
+        return () => {
+            clearInterval(interval.current);
+        };
+    });
+
+    return (
+        <div style={{justifyContent: "center", alignItems: "center", padding: "5%", border: "1px solid black"}}>
+            <Grid container className="counter">
+                <Grid item xs={3} md={3} className="counter-cell">
+                    <p style={{fontWeight: "bold"}}>{timerDays}</p>
+                    <p>Dni</p>
+                </Grid>
+                <Grid item xs={3} md={3} className="counter-cell">
+                    <p style={{fontWeight: "bold"}}>{timerHours}</p>
+                    <p>Godzin</p>
+                </Grid>
+                <Grid item xs={3} md={3} className="counter-cell">
+                    <p style={{fontWeight: "bold"}}>{timerMinutes}</p>
+                    <p>Minut</p>
+                </Grid>
+                <Grid item xs={3} md={3} className="counter-cell">
+                    <p style={{fontWeight: "bold"}}>{timerSeconds}</p>
+                    <p>Sekund</p>
+                </Grid>
+            </Grid>
+        </div>
+    );   
 }
 
 function FadeOutSubtitle() {
@@ -55,9 +116,9 @@ const Home = () => {
         <div>
             <FadeOutSubtitle />
             <Grid container className="info-container">
-                <Grid item xs={12} md={8}>
+                <Grid item xs={12} md={8} style={{padding: "5%"}}>
                     <h2>Odliczanie</h2>
-                    <p>(Miejsce na odliczanie)</p>
+                    <Counter/>
                 </Grid>
             </Grid>
             <Grid container className="content">
