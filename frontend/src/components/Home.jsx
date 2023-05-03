@@ -1,39 +1,73 @@
 import React from 'react';
-import { Container, Grid } from '@mui/material';
+import { useState, useEffect } from 'react';
+import { Container, Grid, Divider } from '@mui/material';
 import { Skeleton } from '@material-ui/lab';
-import background from './images/background.png';
+import background from './images/background_5.png';
 
 function ImageWithPlaceholder({ src }) {
     const [isLoading, setIsLoading] = React.useState(true);
 
     return (
         <div data-testid="image-with-placeholder" style={{ position: "relative", width: "100%", height: "100%"}}>
-            <img src={src} style={{ objectFit: 'cover', objectPosition: 'top', display: isLoading ? "none" : "block", width: "100%", height: "70vh" }}onLoad={() => setIsLoading(false)} />
+            <img src={src} style={{ objectFit: 'cover', objectPosition: 'top', display: isLoading ? "none" : "block", width: "100%", height: "70vh" }} onLoad={() => setIsLoading(false)} />
             { isLoading && (
                 <Skeleton variant="rect" width="100%" height="100%" animation="pulse" style={{ position: "absolute", top: 0, left: 0 }} />
             )}
         </div>
-    )
+    );
+}
+
+function FadeOutSubtitle() {
+    const [padding, setPadding] = useState(10);
+  
+    useEffect(() => {
+      let targetPadding;
+      if (window.innerWidth > 720) {
+        targetPadding = 1;
+      } else {
+        targetPadding = 5;
+      }
+  
+      const handleScroll = () => {
+        const currentScrollPos = window.pageYOffset;
+        const maxScrollPos = document.body.clientHeight - window.innerHeight;
+        const scrollPercentage = currentScrollPos / maxScrollPos;
+        const newPaddingValue = window.innerWidth > 720 ? (1 - scrollPercentage) * 5 : (1 - scrollPercentage) * 20;
+        setPadding(newPaddingValue > targetPadding ? newPaddingValue : targetPadding);
+      };
+      
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+  
+    return (
+      <div className="header" style={{position: "sticky", zIndex: "1", top: "0", backgroundColor: "white", paddingTop: `${padding}%`, paddingBottom: `${padding}%`}}>
+        <Container>
+            <h1>Kasia & Damian</h1>
+        </Container>
+      </div>
+    );
 }
 
 const Home = () => {
+
     return (
         <div>
-            <Container className="header">
-                <h1>Kasia & Damian</h1>
-                <Grid container className="subtitle">
-                    <p style={{padding: "0", fontWeight: "100"}}>Serdecznie zapraszamy na uroczystość Zaślubin! </p>
+            <FadeOutSubtitle />
+            <Grid container className="info-container">
+                <Grid item xs={12} md={8}>
+                    <h2>Odliczanie</h2>
+                    <p>(Miejsce na odliczanie)</p>
                 </Grid>
-            </Container>
-            
-            <Grid container>
-                <Grid item xs={12} md={6} className="content-left">
-                    <ImageWithPlaceholder src={background} />
-                </Grid>
-                <Grid data-testid="content-right" item xs={12} md={6} className="content-right">
-                    <h2 style={{justifyContent: "left", alignItems: "left", padding: "0", paddingLeft: "5%"}}>Nagłówek </h2>
-                    <p style={{textAlign: "left"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </Grid>
+            </Grid>
+            <Grid container className="content">
+                    <Grid item xs={12} md={6} className="content-left">
+                        <ImageWithPlaceholder src={background} />
+                    </Grid>
+                    <Grid data-testid="content-right" item xs={12} md={6} className="content-right">
+                        <h2 style={{justifyContent: "left", alignItems: "left", padding: "0", paddingLeft: "5%"}}>Nagłówek </h2>
+                        <p style={{textAlign: "left"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </Grid>
             </Grid >
             <Grid container className="info-container" style={{paddingBottom: "5%"}}>
                 <Grid item xs={12} md={8}>

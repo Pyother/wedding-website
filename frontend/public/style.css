@@ -43,14 +43,13 @@ p {
     font-weight: 100;
 }
 
+.header.shrink {
+    padding: 0%;
+}
+
 .button-container {
     padding: 5%;
     padding-top: 2%;
-}
-
-.header {
-    margin: 5%;
-    padding: 0;
 }
 
 .subtitle {
@@ -59,11 +58,27 @@ p {
     align-items: center;
 }
 
+.fade-out {
+    animation: fadeOut 2s ease forwards;
+    opacity: 1;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 .content-left {
+    position: relative;
     background-color: inherit;
 }
 
 .content-right {
+    position: relative;
     color: white;
     background-color: #023322;
 }
