@@ -43,6 +43,10 @@ p {
     font-weight: 100;
 }
 
+.header {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 .content-left {
     position: relative;
     background-color: inherit;
@@ -72,6 +76,7 @@ p {
 }
 .counter-cell {
     text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 @media (max-width: 720px) {

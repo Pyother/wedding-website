@@ -55,22 +55,22 @@ function Counter() {
     });
 
     return (
-        <div style={{justifyContent: "center", alignItems: "center", padding: "5%", border: "1px solid black"}}>
+        <div style={{justifyContent: "center", alignItems: "center", padding: "3%"}}>
             <Grid container className="counter">
                 <Grid item xs={3} md={3} className="counter-cell">
-                    <p style={{fontWeight: "bold"}}>{timerDays}</p>
+                    <p style={{fontWeight: "bold"}}><h1>{timerDays}</h1></p>
                     <p>Dni</p>
                 </Grid>
                 <Grid item xs={3} md={3} className="counter-cell">
-                    <p style={{fontWeight: "bold"}}>{timerHours}</p>
+                    <p style={{fontWeight: "bold"}}><h1>{timerHours}</h1></p>
                     <p>Godzin</p>
                 </Grid>
                 <Grid item xs={3} md={3} className="counter-cell">
-                    <p style={{fontWeight: "bold"}}>{timerMinutes}</p>
+                    <p style={{fontWeight: "bold"}}><h1>{timerMinutes}</h1></p>
                     <p>Minut</p>
                 </Grid>
                 <Grid item xs={3} md={3} className="counter-cell">
-                    <p style={{fontWeight: "bold"}}>{timerSeconds}</p>
+                    <p style={{fontWeight: "bold"}}><h1>{timerSeconds}</h1></p>
                     <p>Sekund</p>
                 </Grid>
             </Grid>
@@ -79,21 +79,16 @@ function Counter() {
 }
 
 function FadeOutSubtitle() {
-    const [padding, setPadding] = useState(10);
+    const [padding, setPadding] = useState(5);
   
     useEffect(() => {
-      let targetPadding;
-      if (window.innerWidth > 720) {
-        targetPadding = 1;
-      } else {
-        targetPadding = 5;
-      }
+      let targetPadding = 1;
   
       const handleScroll = () => {
         const currentScrollPos = window.pageYOffset;
         const maxScrollPos = document.body.clientHeight - window.innerHeight;
         const scrollPercentage = currentScrollPos / maxScrollPos;
-        const newPaddingValue = window.innerWidth > 720 ? (1 - scrollPercentage) * 5 : (1 - scrollPercentage) * 20;
+        const newPaddingValue = (1 - scrollPercentage) * 5;
         setPadding(newPaddingValue > targetPadding ? newPaddingValue : targetPadding);
       };
       
@@ -105,6 +100,7 @@ function FadeOutSubtitle() {
       <div className="header" style={{position: "sticky", zIndex: "1", top: "0", backgroundColor: "white", paddingTop: `${padding}%`, paddingBottom: `${padding}%`}}>
         <Container>
             <h1>Kasia & Damian</h1>
+            <h2 style={{padding: "0", margin: "0"}}>Serdecznie zapraszamy na Nasze wesele!</h2>
         </Container>
       </div>
     );
@@ -115,9 +111,9 @@ const Home = () => {
     return (
         <div>
             <FadeOutSubtitle />
-            <Grid container className="info-container">
-                <Grid item xs={12} md={8} style={{padding: "5%"}}>
-                    <h2>Odliczanie</h2>
+            <Grid container className="info-container" style={{backgroundColor: "white", color: "black"}}>
+                <Grid item xs={12} md={8} style={{padding: "5%", paddingTop: "0%"}}>
+                    <h2 style={{margin: "0"}}>Odliczanie</h2>
                     <Counter/>
                 </Grid>
             </Grid>
@@ -126,11 +122,11 @@ const Home = () => {
                         <ImageWithPlaceholder src={background} />
                     </Grid>
                     <Grid data-testid="content-right" item xs={12} md={6} className="content-right">
-                        <h2 style={{justifyContent: "left", alignItems: "left", padding: "0", paddingLeft: "5%"}}>Nagłówek </h2>
-                        <p style={{textAlign: "left"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h2 style={{justifyContent: "left", alignItems: "left", padding: "0", paddingLeft: "5%"}}>Jak się poznaliśmy?</h2>
+                        <p style={{textAlign: "left"}}>Nasza historia zaczęła się pewnego majowego popołudnia w 2016 roku, gdy oboje podróżowaliśmy tramwajem numer 50 który tego dnia postanowił się niespodziewanie zatrzymać. Przysiadając się obok Damiana, nigdy bym nie przypuszczała, jak ta historia może potoczyć się dalej i że doprowadzi nas do dzisiejszego punktu na osi czasu. Gdy postój na przystanku poprzedzającym nasz desant przeciągał się na kolejne minuty a ja zdenerwowana wyciągnęłam słuchawki z uszu, obcy pasażer obok zagadał: „Chyba musimy wysiąść, bo zdaje się, że ten tramwaj na razie nie ruszy. Dokąd zmierzasz?”. </p>
                     </Grid>
             </Grid >
-            <Grid container className="info-container" style={{paddingBottom: "5%"}}>
+            <Grid container className="info-container" style={{paddingBottom: "5%", backgroundColor: "white", color: "black"}}>
                 <Grid item xs={12} md={8}>
                     <h2>Informacje o Weselu</h2>
                     <p>13.05.2023, godz.14:00</p>
