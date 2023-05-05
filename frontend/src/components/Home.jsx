@@ -4,6 +4,9 @@ import { Container, Grid, Divider } from '@mui/material';
 import { Skeleton } from '@material-ui/lab';
 import Countdown from 'react-countdown';
 import background from './images/background.png';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
+import HotelOutlinedIcon from '@mui/icons-material/HotelOutlined';
 
 function ImageWithPlaceholder({ src }) {
     const [isLoading, setIsLoading] = React.useState(true);
@@ -100,7 +103,7 @@ function FadeOutSubtitle() {
       <div className="header" style={{position: "sticky", zIndex: "1", top: "0", backgroundColor: "white", paddingTop: `${padding}%`, paddingBottom: `${padding}%`}}>
         <Container>
             <h1>Kasia & Damian</h1>
-            <h2 style={{padding: "0", margin: "0"}}>Serdecznie zapraszamy na Nasze wesele!</h2>
+            <h2 style={{padding: "0", margin: "0"}}>Serdecznie zapraszamy na Nasze Wesele!</h2>
         </Container>
       </div>
     );
@@ -129,9 +132,71 @@ const Home = () => {
             <Grid container className="info-container" style={{paddingBottom: "5%", backgroundColor: "white", color: "black"}}>
                 <Grid item xs={12} md={8}>
                     <h2>Informacje o Weselu</h2>
-                    <p>13.05.2023, godz.14:00</p>
-                    <p>Parafia pw. Św. Franciszka Salezego i św. Andrzeja Boboli w Gorzycach </p>
-                    <p>Po weselu zapraszamy na przyjęcie weselne, które odbędzie się w Dworze Dwikozy przy ul. Spółdzielczej 12 w Dwikozach. </p>
+                    <Grid container>
+                        <Grid item xs={12} md={4} className="counter-cell">
+                            <CalendarMonthOutlinedIcon className="icon"/>
+                            <p>13.05.2023, godz.14:00</p>
+                        </Grid>
+                        <Grid item xs={12} md={4} className="counter-cell">
+                            <PlaceOutlinedIcon className="icon"/>
+                            <p>Parafia pw. Św. Franciszka Salezego i św. Andrzeja Boboli w Gorzycach</p>
+                        </Grid>
+                        <Grid item xs={12} md={4} className="counter-cell">
+                            <HotelOutlinedIcon className="icon"/>
+                            <p>(Miejsce na Informacje o zakwaterowaniu)</p>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid item xs={12} md={8}>
+                    <h2>Szczegółowy plan Wesela</h2>
+                    <Grid container>
+                        <Grid item xs={3} md={3} style={{padding: "0%"}}>
+                            <p>14:00</p>
+                        </Grid>
+                        <Grid item xs={9} md={9} style={{padding: "0%"}}>
+                            <p style={{padding: "0%"}}>Ceremonia ślubna</p>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={3} md={3} style={{padding: "0%"}}>
+                            <p>14:50</p>
+                        </Grid>
+                        <Grid item xs={9} md={9} style={{padding: "0%", textAlign: "left"}}>
+                            <p style={{padding: "0%"}}>Pamiątkowe zdjęcia przed kościołem</p>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={3} md={3} style={{padding: "0%"}}>
+                            <p>15:15</p>
+                        </Grid>
+                        <Grid item xs={9} md={9} style={{padding: "0%"}}>
+                            <p style={{padding: "0%"}}>Przybycie pary młodej na salę weselną</p>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={3} md={3} style={{padding: "0%"}}>
+                            <p>16:00</p>
+                        </Grid>
+                        <Grid item xs={9} md={9} style={{padding: "0%", textAlign: "left"}}>
+                            <p style={{padding: "0%"}}>Uroczysty obiad</p>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={3} md={3} style={{padding: "0%"}}>
+                            <p>17:00</p>
+                        </Grid>
+                        <Grid item xs={9} md={9} style={{padding: "0%"}}>
+                            <p style={{padding: "0%"}}>Pierwszy taniec i rozpoczęcie zabawy</p>
+                        </Grid>
+                    </Grid>
+                    <Grid container>
+                        <Grid item xs={3} md={3} style={{padding: "0%"}}>
+                            <p>19:00</p>
+                        </Grid>
+                        <Grid item xs={9} md={9} style={{padding: "0%", textAlign: "left"}}>
+                            <p style={{padding: "0%"}}>Pierwsza kolacja</p>
+                        </Grid>
+                    </Grid>
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <h2>Jak do nas dotrzeć?</h2> 
