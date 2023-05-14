@@ -12,7 +12,7 @@ function ImageWithPlaceholder({ src }) {
 
     return (
         <div data-testid="image-with-placeholder" style={{ position: "relative", width: "100%", height: "100%"}}>
-            <img src={src} style={{ objectFit: 'cover', objectPosition: 'top', display: isLoading ? "none" : "block", width: "100%", height: "70vh" }} onLoad={() => setIsLoading(false)} />
+            <img src={src} style={{ objectFit: 'cover', objectPosition: 'top', display: isLoading ? "none" : "block", width: "100%", height: window.innerWidth >= 721 ? "70vh" : "40vh"}} onLoad={() => setIsLoading(false)} />
             { isLoading && (
                 <Skeleton variant="rect" width="100%" height="100%" animation="pulse" style={{ position: "absolute", top: 0, left: 0 }} />
             )}
@@ -229,12 +229,18 @@ const Home = () => {
                         </Table>
                     </TableContainer>
                 </Grid>
-                <Grid item xs={12} md={8} id="location">
+                <Grid item xs={10} md={8} id="location">
                     <h2>Jak do nas dotrzeć?</h2> 
                     <iframe data-testid="iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4794.657451332664!2d21.781786569486854!3d50.73779075078343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4722b670fcc66eeb%3A0x23a4ce0291aa1b21!2sDw%C3%B3r%20Dwikozy%20Hotel%20Sandomierz!5e1!3m2!1spl!2spl!4v1677711265730!5m2!1spl!2spl" style={{width: "100%", height: "50vh", border: "0"}} loading="lazy"></iframe>                   
                 </Grid>
                 <Grid item xs={12} md={8}>
                     <h2>Księga Gości</h2>
+                    <p>Zapisz swoje życzenia dla nowożeńców i wpisz się do naszej księgi gości - to piękna pamiątka na lata! Pole do popisu jest szerokie - czeka na Ciebie zarówno tradycyjna księga, jak i froma online!</p>
+                    <Grid container style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                        <Grid item xs={10} md={8}>
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScN354-XbBM9KkkDrMfx2a6d7o3k0CyLClwWvWVLYzs1bSmjA/viewform?embedded=true" width="100%" height="1000px" frameborder="0" marginheight="0" marginwidth="0">Ładuję…</iframe>
+                        </Grid>
+                    </Grid>
                 </Grid>
                 <Grid item xs={12} md={8} id="contact">
                     <h2>Kontakt</h2>
